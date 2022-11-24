@@ -17,45 +17,58 @@ namespace EpamTestingLab
     {
         IWebDriver driver;
 
-        [SetUp]
-        public void startBrowser()
-        {
-            driver = new ChromeDriver("D:\\3rdparty\\chrome");
-        }
+        //[SetUp]
+        //public void startBrowser()
+        //{
+        //    driver = new ChromeDriver("D:\\3rdparty\\chrome");
+        //}
 
         [Test]
         public void test1()
         {
-            driver.Url = "https://pastebin.com/";
-            IWebElement CodeInput = driver.FindElement(By.Id("postform-text"));
-            CodeInput.SendKeys("Hello from WebDriver");
-            driver.FindElement(By.Id("select2-postform-expiration-container")).Click();
-            driver.FindElement(By.XPath("//li[text()='10 Minutes']")).Click();
+            //driver.Url = "https://pastebin.com/";
+            //IWebElement CodeInput = driver.FindElement(By.Id("postform-text"));
+            //CodeInput.SendKeys("Hello from WebDriver");
+            //driver.FindElement(By.Id("select2-postform-expiration-container")).Click();
+            //driver.FindElement(By.XPath("//li[text()='10 Minutes']")).Click();
 
-            IWebElement NameInput = driver.FindElement(By.Id("postform-name"));
-            NameInput.SendKeys("helloweb");
+            //IWebElement NameInput = driver.FindElement(By.Id("postform-name"));
+            //NameInput.SendKeys("helloweb");
 
-            driver.FindElement(By.XPath("//button[@class='btn -big']")).Click();
+            //driver.FindElement(By.XPath("//button[@class='btn -big']")).Click();
+            PastebinHomePage page = new PastebinHomePage();
+            page.openPage();
+            page.writeTextToArea("Hello from WebDriver");
+            page.writeTitle("helloweb");
+            page.selectOptionsByXPath("//li[text()='10 Minutes']");
+            page.createPaste();
         }
         [Test]
         public void test2()
         {
-            driver.Url = "https://pastebin.com/";
-            IWebElement CodeInput = driver.FindElement(By.Id("postform-text"));
-            CodeInput.SendKeys("git config —global user.name \"New Sheriff in Town\"\n" +
-            "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
-            "git push origin master —forceHello from WebDriver");
+            //driver.Url = "https://pastebin.com/";
+            //IWebElement CodeInput = driver.FindElement(By.Id("postform-text"));
+            //CodeInput.SendKeys("git config —global user.name \"New Sheriff in Town\"\n" +
+            //"git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
+            //"git push origin master —forceHello from WebDriver");
 
-            driver.FindElement(By.Id("select2-postform-format-container")).Click();
-            driver.FindElement(By.XPath("//li[text()='Bash']")).Click();
+            //driver.FindElement(By.Id("select2-postform-format-container")).Click();
+            //driver.FindElement(By.XPath("//li[text()='Bash']")).Click();
 
-            driver.FindElement(By.Id("select2-postform-expiration-container")).Click();
-            driver.FindElement(By.XPath("//li[text()='10 Minutes']")).Click();
+            //driver.FindElement(By.Id("select2-postform-expiration-container")).Click();
+            //driver.FindElement(By.XPath("//li[text()='10 Minutes']")).Click();
 
-            IWebElement NameInput = driver.FindElement(By.Id("postform-name"));
-            NameInput.SendKeys("how to gain dominance among developers");
+            //IWebElement NameInput = driver.FindElement(By.Id("postform-name"));
+            //NameInput.SendKeys("how to gain dominance among developers");
 
-            driver.FindElement(By.XPath("//button[@class='btn -big']")).Click();
+            //driver.FindElement(By.XPath("//button[@class='btn -big']")).Click();
+            PastebinHomePage page = new PastebinHomePage();
+            page.openPage();
+            page.writeTextToArea("git config --global user.name  \"New Sheriff in Town\"\r\ngit reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\r\ngit push origin master --force");
+            page.writeTitle("how to gain dominance among developer");
+            page.selectOptionsByXPath("//li[text()='10 Minutes']");
+            page.selectHighlightsByXPath("//li[text()='Bash']");
+            page.createPaste();
         }
         [Test]
         public void test3()
@@ -164,8 +177,17 @@ namespace EpamTestingLab
         [Test]
         public void test5()
         {
-            driver.Url="https://catalog.onliner.by/videocard/msi/gf3060gam2x12";
-            driver.FindElement(By.XPath("//*[@id=\"container\"]/div/div/div/div/div[2]/div[1]/main/div/div/aside/div[1]/div[3]/div[1]/div[1]/div[3]/a[2]")).Click();
+            driver.Url="https://www.onliner.by/";
+            //driver.FindElement(By.XPath("//*[@id=\"container\"]/div/div/div/div/div[2]/div[1]/main/div/div/aside/div[1]/div[3]/div[1]/div[1]/div[3]/a[2]")).Click();
+            driver.FindElement(By.XPath("//*[@id=\"container\"]/div/div/div/div/div[1]/div/div[1]/ul/li[1]/a/span/span")).Click();
+            driver.FindElement(By.XPath($"//*[@id=\"schema-products\"]/div[2]/div/div[1]/div[1]/div/label")).Click();
+            driver.FindElement(By.XPath($"//*[@id=\"schema-products\"]/div[3]/div/div[1]/div[1]/div/label")).Click();
+            driver.FindElement(By.XPath($"//*[@id=\"schema-products\"]/div[5]/div/div[1]/div[1]/div/label")).Click();
+            driver.FindElement(By.XPath($"//*[@id=\"schema-products\"]/div[6]/div/div[1]/div[1]/div/label")).Click();
+            driver.FindElement(By.XPath($"//*[@id=\"schema-products\"]/div[7]/div/div[1]/div[1]/div/label")).Click();
+            driver.FindElement(By.XPath("//*[@id=\"compare-button-container\"]/div/div[1]/div/div/div[1]/a[2]/span")).Click();
+            Thread.Sleep(2000);
+            driver.FindElement(By.XPath("//*[@id=\"container\"]/div/div/div/div/div[2]/div[1]/div/div/a")).Click();
         }
 
         //[TearDown]
